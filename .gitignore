@@ -1,0 +1,9 @@
+/.ddev
+/.vscode
+/public/assets/
+/public/_resources/
+/themes/simple/
+/vendor/
+
+*.env
+*.env.example
