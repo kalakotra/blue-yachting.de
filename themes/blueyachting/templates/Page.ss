@@ -8,9 +8,10 @@ Silverstripe Theme By Brandfisher - www.brandfisher.de
 <html lang="$ContentLocale">
 <head>
 	<% base_tag %>
-	<title><% if $MetaTitle %>$MetaTitle<% else %>$Title<% end_if %> &raquo; $SiteConfig.Title</title>
+	<title>$SeoTitle.XML</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=1, viewport-fit=cover">
 	$MetaTags(false)
+	<% include SeoHead %>
 
 	<link rel="preload" href="$resourceURL('themes/blueyachting/webfonts/fa-brands-400.woff2')" as="font" type="font/woff2" crossorigin="anonymous">
 	<link rel="preload" href="$resourceURL('themes/blueyachting/webfonts/fa-solid-900.woff2')" as="font" type="font/woff2" crossorigin="anonymous">
@@ -27,12 +28,6 @@ Silverstripe Theme By Brandfisher - www.brandfisher.de
 	<meta name="msapplication-TileColor" content="#253a6c">
 	<meta name="theme-color" content="#ffffff">
 
-	<meta property="og:image" content="{$BaseHref}og-image.jpg">
-	<meta property="og:image:width" content="23">
-	<meta property="og:image:height" content="34">
-	<meta property="og:description" content="Als Exklusiv-Importeur unserer ausgesuchten Vertretungen sind wir Ihr Ansprechpartner f&uuml;r den Verkauf und den After Sales in Deutschland, &Ouml;sterreich und der deutschsprachigen Schweiz.">
-	<meta property="og:title" content="Blue Yachting">
-	<meta property="og:url" content="$BaseHref">
 	
 	<!-- Begin Brevo Form -->
 
