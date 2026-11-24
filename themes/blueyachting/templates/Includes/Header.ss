@@ -4,13 +4,13 @@
 			<div class="row justify-content-between py-1">
 				<div class="col-auto flex-grow-1">
 					<% if $SiteConfig.Facebook %>
-						<a href="$SiteConfig.Facebook" rel="nofolow" target="_blank" class="pr-1 text-white"><i class="fab fa-facebook"></i><span class="d-none-special">facebook</span></a>
+						<a href="$SiteConfig.Facebook" rel="nofollow noopener" target="_blank" class="pr-1 text-white"><i class="fab fa-facebook"></i><span class="d-none-special">facebook</span></a>
 					<% end_if %>
 					<% if $SiteConfig.Twitter %>
-						<a href="$SiteConfig.Twitter" rel="nofolow" target="_blank" class="pr-1 text-white"><i class="fab fa-twitter"></i><span class="d-none-special">twitter</span></a>
+						<a href="$SiteConfig.Twitter" rel="nofollow noopener" target="_blank" class="pr-1 text-white"><i class="fab fa-twitter"></i><span class="d-none-special">twitter</span></a>
 					<% end_if %>
 					<% if $SiteConfig.Instagram %>
-						<a href="$SiteConfig.Instagram" rel="nofolow" target="_blank" class="pr-1 text-white"><i class="fab fa-instagram"></i><span class="d-none-special">instagram</span></a>
+						<a href="$SiteConfig.Instagram" rel="nofollow noopener" target="_blank" class="pr-1 text-white"><i class="fab fa-instagram"></i><span class="d-none-special">instagram</span></a>
 					<% end_if %>
 				</div>
 				<% if $SiteConfig.Email %>
@@ -20,7 +20,7 @@
 				<% end_if %>
 				<% if $SiteConfig.Telephone %>
 					<div class="col-auto text-right">
-						<a href="tel://$SiteConfig.TelephoneLink" class="text-white" aria-label="Rufen Sie uns an"><i class="fas fa-phone-square-alt"></i><span class="d-none d-md-inline"> $SiteConfig.Telephone</span></a>
+						<a href="tel:$SiteConfig.TelephoneLink" class="text-white" aria-label="Rufen Sie uns an"><i class="fas fa-phone-square-alt"></i><span class="d-none d-md-inline"> $SiteConfig.Telephone</span></a>
 					</div>
 				<% end_if %>
 				<div class="col-auto">
@@ -51,6 +51,6 @@
 	</div>
 </header>
 <div id="mobileMenu" class="animated shadow">
-	<a href="home/" class="d-block p-3"><img src="$resourceURL('themes/blueyachting/images/blue-yachting-logo.png')" alt="blue yachting logo" /></a>
+	<a href="$BaseHref" class="d-block p-3" rel="home"><img src="$resourceURL('themes/blueyachting/images/blue-yachting-logo.png')" alt="blue yachting logo" /></a>
 	<% include MobileNavigation %>
 </div>

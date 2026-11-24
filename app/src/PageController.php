@@ -94,6 +94,15 @@ namespace {
             return $myClass::get();
         }
 
+        /**
+         * Absolute link to the privacy policy page (TSEO-003: avoid relative "datenschutz/" links).
+         */
+        public function privacyPolicyLink(): string
+        {
+            $page = \SilverStripe\CMS\Model\SiteTree::get()->filter('URLSegment', 'datenschutz')->first();
+            return $page ? htmlspecialchars($page->Link(), ENT_QUOTES) : '';
+        }
+
         public function getRandomServicePages($limit = 3) {
             $pages = ServicePage::get()->toArray();
             shuffle($pages);
@@ -122,7 +131,7 @@ namespace {
             $fields = FieldList::create( 
                 EmailField::create('Email', 'Email')->setAttribute("placeholder", "Email")->addExtraClass("hide-label")->setAttribute('aria-label', 'Email'), 
                 DropdownField::create('Trademark', 'Trademark', $myTM->map("ID", "MenuTitle"))->setEmptyString(_t("NewsletterForm.Trademark","Welche Marken interessieren Sie?"))->addExtraClass("mb-0")->addExtraClass("hide-label"),
-                CheckboxField::create("datenschutz", DBField::create_field("HTMLFragment", 'Ich habe die <a href="datenschutz/" target="_blank" class="text-white-">Datenschutzerklärung</a> gelesen und akzeptiere sie.')) //->addExtraClass("text-white")
+                CheckboxField::create("datenschutz", DBField::create_field("HTMLFragment", 'Ich habe die <a href="' . $this->privacyPolicyLink() . '" target="_blank" class="text-white-">Datenschutzerklärung</a> gelesen und akzeptiere sie.')) //->addExtraClass("text-white")
             ); 
 
             $actions = FieldList::create( 
@@ -151,7 +160,7 @@ namespace {
             $fields = FieldList::create( 
                 CheckboxSetField::create('Products', 'Ausgewählte Produkte', $myProducts->map()),
                 EmailField::create('Email', 'Email')->setAttribute("placeholder", "Email")->addExtraClass("hide-label"), 
-                CheckboxField::create("datenschutz", DBField::create_field("HTMLFragment", 'Ich habe die <a href="datenschutz/" target="_blank" ><u>Datenschutzerklärung</u></a> gelesen und akzeptiere sie.'))
+                CheckboxField::create("datenschutz", DBField::create_field("HTMLFragment", 'Ich habe die <a href="' . $this->privacyPolicyLink() . '" target="_blank" ><u>Datenschutzerklärung</u></a> gelesen und akzeptiere sie.'))
             ); 
 
             $actions = FieldList::create( 
@@ -197,7 +206,7 @@ namespace {
                 EmailField::create('Email', 'Email')->setAttribute("placeholder", "Email")->setAttribute('aria-label', 'Email'), 
                 TextField::create('FirstName', 'Vorname')->setAttribute("placeholder", "Vorname")->setAttribute('aria-label', 'Vorname'),
                 TextField::create('LastName', 'Nachname')->setAttribute("placeholder", "Nachname")->setAttribute('aria-label', 'Nachname'),
-                CheckboxField::create("datenschutz", DBField::create_field("HTMLFragment", 'Ich habe die <a href="datenschutz/" target="_blank" class="text-white-">Datenschutzerklärung</a> gelesen und akzeptiere sie.'))
+                CheckboxField::create("datenschutz", DBField::create_field("HTMLFragment", 'Ich habe die <a href="' . $this->privacyPolicyLink() . '" target="_blank" class="text-white-">Datenschutzerklärung</a> gelesen und akzeptiere sie.'))
             ); 
 
             $actions = FieldList::create( 

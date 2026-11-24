@@ -1,0 +1,64 @@
+---
+Name: app-seo
+After:
+  - '#coreroutes'
+  - '#googlesitemaproutes'
+---
+# Technical SEO (YWLI audit 2026-11-16, findings TSEO-001 … TSEO-007)
+SilverStripe\CMS\Model\SiteTree:
+  extensions:
+    - App\Seo\SeoPageExtension
+  hreflang_map:
+    de_DE: 'de'
+    en_US: 'en'
+
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - App\Seo\SeoSiteConfigExtension
+
+SilverStripe\Control\Director:
+  rules:
+    'robots.txt': 'App\Seo\RobotsTxtController'
+
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Control\Director:
+    properties:
+      Middlewares:
+        LegacyRedirectMiddleware: '%$App\Seo\LegacyRedirectMiddleware'
+
+# Brands no longer offered (ELAN, HH Catamarans): old URLs are still linked from
+# blog posts and external sites.
+# Target needs confirmation by Blue Yachting (see docs/seo/SEO-Inhalte.md, TSEO-003).
+App\Seo\LegacyRedirectMiddleware:
+  redirects:
+    'de/neuboote/elan-yachts': 'de/neuboote/'
+    'de/neuboote/hh-catamarans': 'de/neuboote/'
+
+# Meta Editor: edit the new MetaTitle field instead of the page title (CSEO-001/002).
+Axllent\MetaEditor\MetaEditor:
+  meta_title_field: 'MetaTitle'
+  meta_title_min_length: 30
+  meta_title_max_length: 60
+  meta_description_min_length: 120
+  meta_description_max_length: 158
+
+# Sitemap: never list system pages.
+Wilr\GoogleSitemaps\GoogleSitemap:
+  use_show_in_search: true
+---
+Name: app-seo-live
+After:
+  - '#app-seo'
+Only:
+  environment: 'live'
+---
+SilverStripe\Control\Session:
+  cookie_secure: true
+
+
+# blue-yachting.de → www.blue-yachting.de in one hop, path and query kept (TSEO-002).
+# Not via CanonicalURLMiddleware.ForceWWW: that drops the trailing slash and causes a second redirect.
+App\Seo\LegacyRedirectMiddleware:
+  canonical_host: 'www.blue-yachting.de'
+  redirect_hosts:
+    - 'blue-yachting.de'
