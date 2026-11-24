@@ -26,11 +26,13 @@ SilverStripe\Core\Injector\Injector:
       Middlewares:
         LegacyRedirectMiddleware: '%$App\Seo\LegacyRedirectMiddleware'
 
-# Removed ELAN range: old URLs still linked from blog posts and external sites.
+# Brands no longer offered (ELAN, HH Catamarans): old URLs are still linked from
+# blog posts and external sites.
 # Target needs confirmation by Blue Yachting (see docs/seo/SEO-Inhalte.md, TSEO-003).
 App\Seo\LegacyRedirectMiddleware:
   redirects:
     'de/neuboote/elan-yachts': 'de/neuboote/'
+    'de/neuboote/hh-catamarans': 'de/neuboote/'
 
 # Meta Editor: edit the new MetaTitle field instead of the page title (CSEO-001/002).
 Axllent\MetaEditor\MetaEditor:
