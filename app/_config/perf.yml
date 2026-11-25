@@ -1,0 +1,28 @@
+---
+Name: app-perf
+After:
+  - '#corecache'
+  - '#googlesitemaproutes'
+---
+# Partial caching (YWLI 2026-11-26). Keys contain App\Perf\ContentVersion, so blocks
+# are invalidated by content changes; the lifetime only bounds disk usage.
+SilverStripe\CMS\Controllers\ContentController:
+  extensions:
+    - App\Perf\PartialCacheExtension
+
+SilverStripe\Core\Injector\Injector:
+  Psr\SimpleCache\CacheInterface.cacheblock:
+    factory: SilverStripe\Core\Cache\CacheFactory
+    constructor:
+      namespace: 'cacheblock'
+      defaultLifetime: 86400
+  Psr\SimpleCache\CacheInterface.sitemapCache:
+    factory: SilverStripe\Core\Cache\CacheFactory
+    constructor:
+      namespace: 'sitemapCache'
+      defaultLifetime: 86400
+  Wilr\GoogleSitemaps\Control\GoogleSitemapController:
+    class: App\Perf\CachedSitemapController
+
+BlogHolder:
+  posts_per_page: 12
