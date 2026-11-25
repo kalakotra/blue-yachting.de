@@ -18,11 +18,12 @@
 	</div>
 </main>
 
-<% if AllChildren %>
-	<section class="bg-light">
+<% cached $PartialCacheKey('blog-list', 1), $PaginatedPosts.CurrentPage %>
+<% if $PaginatedPosts.exists %>
+	<section class="bg-light" aria-label="Beiträge">
 		<div class="container py-5">
 			<div class="row justify-content-between">
-				<% loop AllChildren.reverse %>
+				<% loop $PaginatedPosts %>
 					<div class="col-12 col-md-6 col-xl-5">
 						<% include ChildrenLoopBox %>
 					</div>
@@ -32,6 +33,8 @@
 					<% end_if %>
 				<% end_loop %>
 			</div>
+			<% include Pagination Items=$PaginatedPosts %>
 		</div>
 	</section>
 <% end_if %>
+<% end_cached %>
