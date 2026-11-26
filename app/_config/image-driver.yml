@@ -1,0 +1,7 @@
+---
+Name: project-image-driver
+After: '#assetsimage-imagick'
+---
+SilverStripe\Core\Injector\Injector:
+  InterventionImageDriver:
+    class: 'Intervention\Image\Drivers\Gd\Driver'

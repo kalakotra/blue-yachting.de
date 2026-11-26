@@ -1,28 +1,28 @@
 <% if isFirst %>
 	<% with $Image %>
-		<picture class="lazy-picture">
-			<source media="(max-width: 425px)" srcset="$FocusFill(450,650).URL">
-			<source media="(max-width: 576px)" srcset="$FocusFill(580,650).URL">
-			<source media="(max-width: 768px)" srcset="$FocusFill(770,500).URL">
-			<source media="(max-width: 992px)" srcset="$FocusFill(1000,600).URL">
-			<source media="(max-width: 1200px)" srcset="$FocusFill(1300,600).URL">
-			<source media="(min-width: 1201px)" srcset="$FocusFill(1920,1000).URL">
+		<picture class="lazy-picture" data-info="$Convert('webp').URL">
+			<source media="(max-width: 425px)" srcset="$FocusFill(450,650).Convert('webp').URL 1x, $FocusFill(620,895).Convert('webp').URL 1.5x">
+			<source media="(max-width: 576px)" srcset="$FocusFill(580,650).Convert('webp').URL">
+			<source media="(max-width: 768px)" srcset="$FocusFill(770,500).Convert('webp').URL">
+			<source media="(max-width: 992px)" srcset="$FocusFill(1000,600).Convert('webp').URL">
+			<source media="(max-width: 1200px)" srcset="$FocusFill(1300,600).Convert('webp').URL">
+			<source media="(min-width: 1201px)" srcset="$FocusFill(1920,1000).Convert('webp').URL">
 
-			<img src="$FocusFill(450,450).URL" alt="$Title"  title="$Title" class="d-block w-100" />
+			<img src="$FocusFill(450,450).Convert('webp').URL" alt="$Title" title="$Title" class="d-block w-100" loading="eager" fetchpriority="high" />
 
 		</picture>
 	<% end_with %>
 <% else %>
 	<% with $Image %>
 		<picture>
-			<source media="(max-width: 425px)" srcset="$FocusFill(450,650).URL">
-			<source media="(max-width: 576px)" srcset="$FocusFill(580,650).URL">
-			<source media="(max-width: 768px)" srcset="$FocusFill(770,500).URL">
-			<source media="(max-width: 992px)" srcset="$FocusFill(1000,600).URL">
-			<source media="(max-width: 1200px)" srcset="$FocusFill(1300,600).URL">
-			<source media="(min-width: 1201px)" srcset="$FocusFill(1920,1000).URL">
+			<source media="(max-width: 425px)" srcset="$FocusFill(450,650).Convert('webp').URL 1x, $FocusFill(620,895).Convert('webp').URL 1.5x">
+			<source media="(max-width: 576px)" srcset="$FocusFill(580,650).Convert('webp').URL">
+			<source media="(max-width: 768px)" srcset="$FocusFill(770,500).Convert('webp').URL">
+			<source media="(max-width: 992px)" srcset="$FocusFill(1000,600).Convert('webp').URL">
+			<source media="(max-width: 1200px)" srcset="$FocusFill(1300,600).Convert('webp').URL">
+			<source media="(min-width: 1201px)" srcset="$FocusFill(1920,1000).Convert('webp').URL">
 
-			<img src="$FocusFill(450,450).URL" alt="$Title"  title="$Title" class="d-block w-100" />
+			<img src="$FocusFill(450,450).Convert('webp').URL" alt="$Title"  title="$Title" class="d-block w-100" loading="lazy" fetchpriority="low" />
 
 		</picture>
 	<% end_with %>

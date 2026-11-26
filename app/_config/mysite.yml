@@ -11,19 +11,19 @@ SilverStripe\TinyMCE\TinyMCEConfig:
     - 'themes/blueyachting/css/editor.css'
 SilverStripe\View\SSViewer:
   rewrite_hash_links: false
-SilverStripe\SpamProtection\Extension\FormSpamProtectionExtension:
-    default_spam_protector: UndefinedOffset\NoCaptcha\Forms\NocaptchaProtector
-UndefinedOffset\NoCaptcha\Forms\NocaptchaField:
-    site_key: "6Le7ROASAAAAAM9Zm2Haz4YdqC3HaOg9D7Xb6Jk-" #Your site key (required)
-    secret_key: "6Le7ROASAAAAABppYfq5IyYRHpXHDpRJHbFzTXc5" #Your secret key (required)
-    verify_ssl: true #Allows you to disable php-curl's SSL peer verification by setting this to false (optional, defaults to true)
-    default_theme: "light" #Default theme color (optional, light or dark, defaults to light)
-    default_type: "image" #Default captcha type (optional, image or audio, defaults to image)
-    default_size: "normal" #Default size (optional, normal, compact or invisible, defaults to normal)
-    default_badge: "bottomright" #Default badge position (bottomright, bottomleft or inline, defaults to bottomright)
-    proxy_server: "" #Your proxy server address (optional)
-    proxy_port: "" #Your proxy server address port (optional)
-    proxy_auth: "" #Your proxy server authentication information (optional)
+# SilverStripe\SpamProtection\Extension\FormSpamProtectionExtension:
+#     default_spam_protector: UndefinedOffset\NoCaptcha\Forms\NocaptchaProtector
+# UndefinedOffset\NoCaptcha\Forms\NocaptchaField:
+#     site_key: "6Le7ROASAAAAAM9Zm2Haz4YdqC3HaOg9D7Xb6Jk-" #Your site key (required)
+#     secret_key: "6Le7ROASAAAAABppYfq5IyYRHpXHDpRJHbFzTXc5" #Your secret key (required)
+#     verify_ssl: true #Allows you to disable php-curl's SSL peer verification by setting this to false (optional, defaults to true)
+#     default_theme: "light" #Default theme color (optional, light or dark, defaults to light)
+#     default_type: "image" #Default captcha type (optional, image or audio, defaults to image)
+#     default_size: "normal" #Default size (optional, normal, compact or invisible, defaults to normal)
+#     default_badge: "bottomright" #Default badge position (bottomright, bottomleft or inline, defaults to bottomright)
+#     proxy_server: "" #Your proxy server address (optional)
+#     proxy_port: "" #Your proxy server address port (optional)
+#     proxy_auth: "" #Your proxy server authentication information (optional)
 SilverStripe\Assets\File:
   force_resample: true
 SilverStripe\Assets\Storage\DBFile:

@@ -70,21 +70,20 @@ namespace {
                 $css[] = $myThemePath.'css/aos.css';                            // animate on scroll
                 $css[] = $myThemePath.'css/hamburgers.min.css';                 // hamburger menu
                 $css[] = $myThemePath.'css/all.min.css';                        // fontawesome
-                Requirements::combine_files('plugins.css', $css, ["media"=>"all"]);
+                Requirements::combine_files('plugins.css', $css, [
+                    'media' => 'print',
+                    'onload' => "this.media='all'",
+                ]);
                 Requirements::process_combined_files();
 
                 $js = [];
                 $js[] = $myThemePath.'javascript/jquery-3.5.1.min.js';
-                Requirements::combine_files('jquery.js', $js);
-                Requirements::process_combined_files();
-
-                $js = [];
                 $js[] = $myThemePath.'javascript/popper.min.js';
                 $js[] = $myThemePath.'javascript/bootstrap.min.js';
                 $js[] = $myThemePath.'javascript/aos.js';
                 $js[] = $myThemePath.'javascript/jquery.fancybox.min.js';
                 $js[] = $myThemePath.'javascript/script.js';
-                Requirements::combine_files('javascripts.js', $js, ["async"=>true, "defer" => true]);
+                Requirements::combine_files('javascripts.js', $js, ['defer' => true]);
                 Requirements::process_combined_files();
             }
         }

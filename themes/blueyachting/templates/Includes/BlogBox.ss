@@ -8,7 +8,7 @@
 				<div class="col-12 col-md-3 mb-3" data-aos="fade-up" data-aos-offset="{$Pos(1)}00">
 					<div class="serviceBoxHolder- h-100 row no-gutters pb-4 shadow justify-content-center">
 						<div class="col-12 pb-3">
-							$PreviewImage.FocusFill(350,220)
+							$PreviewImage.FocusFill(350,220).Convert('webp')
 						</div>
 						<div class="col-10 pb-3">
 							<h3 class="text-center text-uppercase mb-0"><% if PreviewTitle %>$PreviewTitle<% else %>$Title<% end_if %></h3>

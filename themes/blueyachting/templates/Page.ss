@@ -13,12 +13,16 @@ Silverstripe Theme By Brandfisher - www.brandfisher.de
 	$MetaTags(false)
 	<% include SeoHead %>
 
-	<link rel="preload" href="$resourceURL('themes/blueyachting/webfonts/fa-brands-400.woff2')" as="font" type="font/woff2" crossorigin="anonymous">
-	<link rel="preload" href="$resourceURL('themes/blueyachting/webfonts/fa-solid-900.woff2')" as="font" type="font/woff2" crossorigin="anonymous">
+	<% if $ClassName == 'HomePage' %>
+		<% with $Slide.First %>
+			<% if $Image %>
+				<link rel="preload" as="image" type="image/webp" media="(min-width: 1201px)" href="$Image.FocusFill(1920,1000).Convert('webp').URL" fetchpriority="high">
+			<% end_if %>
+		<% end_with %>
+	<% end_if %>
 
-	<link rel="preload" href="$resourceURL('themes/blueyachting/webfonts/CeraPro-Medium.woff')" as="font" type="font/woff" crossorigin="anonymous">
-	<link rel="preload" href="$resourceURL('themes/blueyachting/webfonts/CeraPro-Bold.woff')" as="font" type="font/woff" crossorigin="anonymous">
-	<link rel="preload" href="$resourceURL('themes/blueyachting/webfonts/CeraPro-Regular.woff')" as="font" type="font/woff" crossorigin="anonymous">
+	<link rel="preload" href="/_resources/themes/blueyachting/webfonts/CeraPro-Bold.woff" as="font" type="font/woff" crossorigin="anonymous">
+	<link rel="preload" href="/_resources/themes/blueyachting/webfonts/CeraPro-Regular.woff" as="font" type="font/woff" crossorigin="anonymous">
 
 	<link rel="apple-touch-icon" sizes="60x60" href="{$BaseHref}apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="{$BaseHref}favicon-32x32.png">
@@ -145,7 +149,7 @@ Silverstripe Theme By Brandfisher - www.brandfisher.de
 	$Layout
 </div>
 <% include Footer %>
-<script src="https://app.jurafox.de/bot/ccLoader/8d27e1ba2c853c8d2357ea89aa7facee/54ad131f75eec0e8b49f3d440bb9e324"></script>
+<script src="https://app.jurafox.de/bot/ccLoader/8d27e1ba2c853c8d2357ea89aa7facee/54ad131f75eec0e8b49f3d440bb9e324"  media="print" onload="this.media='all'"></script>
 
 <!-- START - We recommend to place the below code in footer or bottom of your website html  -->
 <script>
@@ -172,9 +176,7 @@ Silverstripe Theme By Brandfisher - www.brandfisher.de
   var AUTOHIDE = Boolean(0);
 </script>
 
-<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
-
-<script src="https://www.google.com/recaptcha/api.js?render=6LcnG1csAAAAAHjL_b3tPnDXGlCQ3CpaLg8mmmj-&hl=de" async defer></script>
+<script defer src="https://sibforms.com/forms/end-form/build/main.js" media="print" onload="this.media='all'"></script>
 
 <!-- END - We recommend to place the above code in footer or bottom of your website html  -->
 <!-- End Brevo Form -->
