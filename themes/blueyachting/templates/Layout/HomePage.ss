@@ -18,6 +18,7 @@
 
 			<div class="col-12 py-5">
 				$OurTrademarks
+				<% cached $PartialCacheKey('home-brand-logos') %>
 				<div class="row justify-content-center py-5">
 					<% loop getMyClass("BooteHolder").filter("ShowOnHomeLogo", "1") %>
 						<div class="col-4 col-md-3 col-lg-2 pb-4" data-aos="fade-up" data-aos-offset-="{$Pos(1)}00">
@@ -25,6 +26,7 @@
 						</div>
 					<% end_loop %>
 				</div>
+				<% end_cached %>
 			</div>
 		</div>
 	</div>
@@ -57,6 +59,6 @@
 
 
 
-<% include BlogBox %>
+<% cached $PartialCacheKey('blogbox') %><% include BlogBox %><% end_cached %>
 
-<% include NewsAndEvents %>
+<% cached $PartialCacheKey('news-events') %><% include NewsAndEvents %><% end_cached %>

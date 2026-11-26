@@ -3,7 +3,7 @@
 	<div class="container pt-5">
 		<div class="row py-5 align-items-center">
 			<div class="col-12 col-lg-6 order-lg-2 pt-5 mt-5 text-white-">
-				<% loop getMyClass("HomePage").limit(1) %>$OurNewsletter<% end_loop %>
+				<% cached $PartialCacheKey('footer-newsletter-text') %><% loop getMyClass("HomePage").limit(1) %>$OurNewsletter<% end_loop %><% end_cached %>
 			</div>
 			<div class="col-12 col-lg-6 order-lg-1 py-5  mt-lg-5">
 				
@@ -18,6 +18,7 @@
 	<div class="container ">
 		<div class="row justify-content-between">
 			<div class="col-12 col-lg-9">
+				<% cached $PartialCacheKey('footer-nav') %>
 				<div class="row no-gutters">
 					<div class="col-12 col-md-6 col-lg-3 pb-4" >
 						<% loop Menu(1) %>
@@ -39,6 +40,7 @@
 						<% end_loop %>
 					</div>
 				</div>
+				<% end_cached %>
 			</div>
 			<div class="col-12 col-lg-3">
 				$SiteConfig.FooterText

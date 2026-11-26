@@ -63,11 +63,13 @@ class SeoPageExtension extends Extension
     public function getSeoTitle(): string
     {
         $owner = $this->getOwner();
+        $page = $this->getPaginationPage();
+        $suffix = $page > 1 ? ' – Seite ' . $page : '';
         if ($owner->MetaTitle) {
-            return (string) $owner->MetaTitle;
+            return $owner->MetaTitle . $suffix;
         }
         $site = SiteConfig::current_site_config()->Title;
-        return $site ? sprintf('%s » %s', $owner->Title, $site) : (string) $owner->Title;
+        return $site ? sprintf('%s%s » %s', $owner->Title, $suffix, $site) : $owner->Title . $suffix;
     }
 
     /**
@@ -75,7 +77,21 @@ class SeoPageExtension extends Extension
      */
     public function getCanonicalURL(): string
     {
-        return (string) $this->getOwner()->AbsoluteLink();
+        $url = (string) $this->getOwner()->AbsoluteLink();
+        // Paginated lists: every page is its own canonical URL (not page 1).
+        if ($this->getPaginationPage() > 1) {
+            $url .= '?start=' . $this->getOwner()->PaginatedPosts()->getPageStart();
+        }
+        return $url;
+    }
+
+    /**
+     * Page number of a paginated overview (owner implements PaginatedPosts()), else 1.
+     */
+    public function getPaginationPage(): int
+    {
+        $owner = $this->getOwner();
+        return $owner->hasMethod('PaginatedPosts') ? (int) $owner->PaginatedPosts()->CurrentPage() : 1;
     }
 
     /**

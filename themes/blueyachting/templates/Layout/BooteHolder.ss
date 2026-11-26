@@ -36,6 +36,7 @@
 	</div>
 </main>
 
+<% cached $PartialCacheKey('holder-children', 1) %>
 <% if Children %>
 	<section class="bg-light">
 		<div class="container py-5">
@@ -53,6 +54,7 @@
 		</div>
 	</section>
 <% end_if %>
+<% end_cached %>
 
 <% if AdditionalContent1 || AdditionalContent2 %>
 	<section class="aditional-content-bg">
@@ -74,4 +76,4 @@
 	</section>
 <% end_if %>
 
-<% include NewsAndEvents %>
+<% cached $PartialCacheKey('news-events') %><% include NewsAndEvents %><% end_cached %>

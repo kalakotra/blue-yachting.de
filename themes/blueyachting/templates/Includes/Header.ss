@@ -37,7 +37,7 @@
 				</a>
 			</div>
 			<div class="col-12 col-xxl-10 d-none d-xxl-block">
-				<% include Navigation %>
+				<% cached $PartialCacheKey('nav-main', 1) %><% include Navigation %><% end_cached %>
 			</div>
 			<div class="col-4 d-block d-xxl-none text-right">
 				<button class="hamburger hamburger--squeeze" type="button">
@@ -52,5 +52,5 @@
 </header>
 <div id="mobileMenu" class="animated shadow">
 	<a href="$BaseHref" class="d-block p-3" rel="home"><img src="$resourceURL('themes/blueyachting/images/blue-yachting-logo.png')" alt="blue yachting logo" /></a>
-	<% include MobileNavigation %>
+	<% cached $PartialCacheKey('nav-mobile', 1) %><% include MobileNavigation %><% end_cached %>
 </div>
