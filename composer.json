@@ -14,11 +14,11 @@
         "bummzack/sortablefile": "^3.0",
         "axllent/silverstripe-meta-editor": "^1.2",
         "tractorcow/silverstripe-fluent": "^8.0",
-        "undefinedoffset/silverstripe-nocaptcha": "^3.0",
         "silverstripe/userforms": "^7.0",
         "jonom/focuspoint": "^6.0",
         "silverstripe/lumberjack": "^4.0",
-        "silverstripe/htmleditor-tinymce": "^1.2"
+        "silverstripe/htmleditor-tinymce": "^1.2",
+        "innoweb/silverstripe-spamprotection-honeypot": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.3"
